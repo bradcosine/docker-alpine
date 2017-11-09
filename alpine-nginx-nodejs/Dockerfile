@@ -1,5 +1,5 @@
 FROM smebberson/alpine-nginx:3.0.0
-MAINTAINER Brad Inscoe <brad@inscoe.com>
+MAINTAINER Brad Inscoe <brad@binarysynapse.com>
 
 ENV NODE_VERSION=v8.1.2 NPM_VERSION=5.3
 
@@ -12,6 +12,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/v3.2/main" >> /etc/apk/repositories
     make install && \
     cd / && \
     npm install -g npm@${NPM_VERSION} && \
+    npm install -g pm2 && \
     apk del gcc g++ linux-headers binutils-gold && \
     rm -rf /etc/ssl /node-${NODE_VERSION} /usr/include \
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp \
